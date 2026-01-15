@@ -6,10 +6,15 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('https://formspree.io/f/maqqnpwz', {
@@ -25,6 +30,7 @@ export default function Home() {
       }
     } catch (error) {
       console.error('Error submitting email:', error);
+      setIsSubmitting(false);
     }
   };
 
@@ -95,18 +101,21 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="px-8 py-4 font-semibold text-white rounded-full transition-all shadow-lg hover:shadow-2xl hover:scale-105 cursor-pointer relative overflow-hidden group"
+              disabled={isSubmitting}
+              className="px-8 py-4 font-semibold text-white rounded-full transition-all shadow-lg hover:shadow-2xl hover:scale-105 cursor-pointer relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               style={{ backgroundColor: '#1a1a1a' }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#252525';
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(255, 255, 255, 0.2)';
+                if (!isSubmitting) {
+                  e.currentTarget.style.backgroundColor = '#252525';
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(255, 255, 255, 0.2)';
+                }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#1a1a1a';
                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span className="relative z-10">Join Waitlist</span>
+              <span className="relative z-10">{isSubmitting ? 'Submitting...' : 'Join Waitlist'}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
             </button>
           </div>
