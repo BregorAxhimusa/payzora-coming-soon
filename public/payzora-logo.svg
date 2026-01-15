@@ -1,0 +1,13 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern P Icon -->
+  <circle cx="30" cy="30" r="24" fill="white" opacity="0.1"/>
+  <path d="M22 15 H32 C38 15 42 19 42 25 C42 31 38 35 32 35 H27 V45 H22 Z M27 20 V30 H32 C35 30 37 28 37 25 C37 22 35 20 32 20 Z"
+        fill="white"
+        stroke="white"
+        stroke-width="0.5"/>
+
+  <!-- Payzora Text -->
+  <text x="58" y="38" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="white" letter-spacing="2">
+    PAYZORA
+  </text>
+</svg>
