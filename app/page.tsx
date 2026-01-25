@@ -1,8 +1,8 @@
 'use client';
 
 import Image from "next/image";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -51,10 +51,10 @@ export default function Home() {
         {/* Logo */}
         <div className="mb-8 animate-fade-in animate-float">
           <Image
-            src="/payzora-logo.png"
+            src="/payzora logo/logo-light-crop.png"
             alt="Payzora Logo"
-            width={200}
-            height={60}
+            width={400}
+            height={120}
             priority
             className="drop-shadow-2xl"
             style={{ borderRadius: '8px' }}
